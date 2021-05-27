@@ -103,7 +103,7 @@ export class ArticleService {
     const queryBuilder = getRepository(ArticleEntity)
       .createQueryBuilder('articles')
       .leftJoinAndSelect('articles.author', 'author')
-      .where('article.authorId IN (:...ids)', { ids: followingUserIds });
+      .where('articles.authorId IN (:...ids)', { ids: followingUserIds });
 
     queryBuilder.orderBy('articles.createdAt', 'DESC');
 
